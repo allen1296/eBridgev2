@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>eBridge.ai Homepage</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:#061b3d;
+  background:#f4f9ff;
+}
+
+a{
+  text-decoration:none;
+}
+
+.header{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  padding:26px 46px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:20;
+}
+
+.logo{
+  font-size:34px;
+  font-weight:800;
+  color:#fff;
+}
+
+.logo span{
+  color:#258dff;
+}
+
+.nav{
+  display:flex;
+  gap:32px;
+}
+
+.nav a{
+  color:#fff;
+  font-size:14px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:#087bff;
+  color:#fff;
+  padding:15px 25px;
+  border-radius:8px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#0065d9;
+}
+
+.hero{
+  min-height:720px;
+  padding:130px 45px 70px;
+  display:grid;
+  grid-template-columns:42% 58%;
+  gap:30px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 72% 35%, rgba(22,130,255,.35), transparent 30%),
+    linear-gradient(135deg,#020b18,#06284a 55%,#020b18);
+}
+
+.hero-text h1{
+  font-size:44px;
+  line-height:1.16;
+  margin-bottom:18px;
+}
+
+.hero-text h1 span{
+  color:#2d91ff;
+}
+
+.hero-text h2{
+  font-size:28px;
+  margin-bottom:24px;
+}
+
+.hero-text p{
+  max-width:560px;
+  font-size:18px;
+  line-height:1.65;
+  margin-bottom:30px;
+}
+
+.hero-badges{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-bottom:36px;
+}
+
+.badge{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.badge img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+}
+
+.badge strong{
+  display:block;
+  font-size:15px;
+}
+
+.badge span{
+  font-size:13px;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.video-btn{
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.play{
+  width:34px;
+  height:34px;
+  border:2px solid rgba(255,255,255,.75);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.visual{
+  position:relative;
+  height:520px;
+}
+
+.center-logo{
+  position:absolute;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:28px;
+  font-weight:800;
+}
+
+.center-logo span{
+  color:#2d91ff;
+}
+
+.circle {
+  position: relative;
+  width: 310px;
+  height: 310px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #1b9cff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 35px rgba(40,150,255,0.7);
+  animation: pulse 3s infinite;
+}
+
+
+.circle:before,
+.circle:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(55,160,255,.5);
+}
+
+.circle:before{
+  inset:18px;
+}
+
+.circle:after{
+  inset:-18px;
+  border-style:dashed;
+}
+
+.health-cloud{
+  width:180px;
+  height:auto;
+}
+
+.connector{
+  position:absolute;
+  width:150px;
+  height:72px;
+  background:#fff;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  box-shadow:0 14px 25px rgba(0,0,0,.25);
+  z-index:5;
+}
+
+.connector img{
+  max-width:118px;
+  max-height:38px;
+  object-fit:contain;
+}
+
+.left-1{left:10px;top:58px;}
+.left-2{left:0;top:158px;}
+.left-3{left:0;top:258px;}
+.left-4{left:20px;top:358px;}
+
+.right-1{right:10px;top:58px;}
+.right-2{right:0;top:158px;}
+.right-3{right:0;top:258px;}
+.right-4{right:20px;top:358px;}
+
+.line{
+  position:absolute;
+  height:2px;
+  border-top:2px dotted rgba(215,238,255,.9);
+  z-index:1;
+}
+
+.line:before,
+.line:after{
+  content:"";
+  position:absolute;
+  top:-7px;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#81cdff;
+  box-shadow:0 0 18px #36a9ff;
+}
+
+.line:before{left:-4px;}
+.line:after{right:-4px;}
+
+.l1{width:120px;left:160px;top:120px;transform:rotate(38deg);}
+.l2{width:105px;left:150px;top:202px;transform:rotate(12deg);}
+.l3{width:105px;left:150px;top:302px;transform:rotate(-12deg);}
+.l4{width:130px;left:170px;top:398px;transform:rotate(-38deg);}
+
+.r1{width:120px;right:160px;top:120px;transform:rotate(-38deg);}
+.r2{width:105px;right:150px;top:202px;transform:rotate(-12deg);}
+.r3{width:105px;right:150px;top:302px;transform:rotate(12deg);}
+.r4{width:130px;right:170px;top:398px;transform:rotate(38deg);}
+
+.more{
+  position:absolute;
+  left:50%;
+  bottom:72px;
+  transform:translateX(-50%);
+  border:1px solid #4aaeff;
+  border-radius:12px;
+  padding:12px 42px;
+  color:#fff;
+  font-weight:700;
+}
+
+.secure-box{
+  position:absolute;
+  left:50%;
+  bottom:-60px;
+  transform:translateX(-50%);
+  width:540px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:20px 28px;
+  border:1px solid rgba(79,177,255,.5);
+  border-radius:14px;
+  background:rgba(4,23,43,.88);
+}
+
+.secure-box img{
+  width:60px;
+}
+
+.secure-box h3{
+  font-size:17px;
+  margin-bottom:8px;
+}
+
+.secure-box p{
+  color:#d9ecff;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.features{
+  padding:34px 8% 20px;
+  text-align:center;
+}
+
+.section-title h2{
+  font-size:31px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  font-size:18px;
+  color:#2a3e63;
+  margin-bottom:24px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:28px 24px;
+  box-shadow:0 8px 25px rgba(12,47,91,.11);
+}
+
+.icon{
+  width:74px;
+  height:74px;
+  border-radius:50%;
+  margin:0 auto 18px;
+  display:grid;
+  place-items:center;
+}
+
+.icon img{
+  width:40px;
+}
+
+.blue{background:#e7f0ff;}
+.green{background:#daf8ed;}
+.purple{background:#efe3ff;}
+.yellow{background:#fff0cf;}
+
+.card h3{
+  font-size:17px;
+  margin-bottom:14px;
+}
+
+.card p{
+  color:#31456a;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.compare{
+  padding:0 8% 16px;
+  text-align:center;
+}
+
+.compare h2{
+  font-size:22px;
+  margin:14px 0 8px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(12,47,91,.1);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:760px;
+}
+
+th,td{
+  border:1px solid #dbe6f3;
+  padding:10px 18px;
+  text-align:left;
+  font-size:14px;
+}
+
+th{
+  color:#061b3d;
+  background:#fff;
+}
+
+.check{
+  color:#0bb16a;
+  font-weight:800;
+}
+
+.minus{
+  color:#f59d1a;
+  font-weight:800;
+}
+
+.standards{
+  margin:18px 8%;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(12,47,91,.1);
+  padding:22px;
+}
+
+.standard-row{
+  display:grid;
+  grid-template-columns:180px repeat(8,1fr);
+  gap:18px;
+  align-items:center;
+  text-align:center;
+}
+
+.standard-row strong{
+  text-align:left;
+}
+
+.logo-strip{
+  border-top:1px solid #dbe6f3;
+  margin-top:18px;
+  padding-top:18px;
+  text-align:center;
+}
+
+.logo-strip p{
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.logo-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+.logo-row img{
+  max-width:92px;
+  max-height:28px;
+  object-fit:contain;
+}
+
+.logo-row a{
+  color:#006dff;
+  font-weight:700;
+  font-size:14px;
+}
+
+.steps{
+  padding:0 8% 30px;
+  text-align:center;
+}
+
+.steps h2{
+  font-size:30px;
+  margin-bottom:22px;
+}
+
+.step-grid{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+.step-icon{
+  width:60px;
+  height:60px;
+  border:1px solid #5dafff;
+  border-radius:50%;
+  margin:0 auto 10px;
+  display:grid;
+  place-items:center;
+}
+
+.step-icon img{
+  width:32px;
+}
+
+.step h3{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.step p{
+  font-size:12px;
+  line-height:1.5;
+  color:#30486c;
+}
+
+.arrow{
+  color:#b8c9dc;
+  font-size:40px;
+  padding-top:18px;
+}
+
+.cta{
+  margin:0 45px 20px;
+  background:linear-gradient(135deg,#03152b,#004c91);
+  color:#fff;
+  border-radius:8px;
+  padding:28px 70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+}
+
+.cta-left{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.cta-left img{
+  width:70px;
+}
+
+.cta h2{
+  font-size:23px;
+  margin-bottom:6px;
+}
+
+.phone{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.phone-box{
+  width:52px;
+  height:52px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+}
+
+.footer{
+  padding:18px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.footer .logo{
+  color:#062b5c;
+  font-size:28px;
+}
+
+.footer nav{
+  display:flex;
+  gap:35px;
+}
+
+.footer a,
+.footer p{
+  color:#1c3458;
+  font-size:13px;
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:28px;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(22px);
+  transition:.7s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:1100px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .visual{
+    transform:scale(.9);
+    transform-origin:top center;
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .standard-row{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .step-grid{
+    grid-template-columns:1fr;
+  }
+
+  .arrow{
+    display:none;
+  }
+
+  .cta{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+
+@media(max-width:760px){
+  .header{
+    padding:22px;
+  }
+
+  .nav,
+  .header .btn{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav.active{
+    position:absolute;
+    top:75px;
+    left:22px;
+    right:22px;
+    display:flex;
+    flex-direction:column;
+    background:#021327;
+    padding:22px;
+    border-radius:12px;
+  }
+
+  .hero{
+    padding:110px 24px 60px;
+  }
+
+  .hero-text h1{
+    font-size:34px;
+  }
+
+  .hero-text h2{
+    font-size:22px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .visual{
+    height:auto;
+    transform:none;
+  }
+
+  .circle,
+  .center-logo,
+  .connector,
+  .line,
+  .more{
+    position:static;
+    transform:none;
+    margin:18px auto;
+  }
+
+  .line{
+    display:none;
+  }
+
+  .secure-box{
+    position:static;
+    transform:none;
+    width:100%;
+    margin-top:20px;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .standard-row{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer{
+    flex-direction:column;
+  }
+
+  .footer nav{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">eBridge<span>.ai</span></div>
+
+  <nav class="nav" id="navMenu">
+    <a href="#">Solutions</a>
+    <a href="#">EMR & PM Connectors</a>
+    <a href="#">Platform</a>
+    <a href="#">Pricing</a>
+    <a href="#">Resources</a>
+    <a href="#">About Us</a>
+  </nav>
+
+  <a href="#" class="btn">Request a Demo</a>
+  <button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>
+      Purpose-Built Integration<br>
+      for <span>Salesforce Health Cloud.</span>
+    </h1>
+
+    <h2>Connect. Synchronize. Improve Outcomes.</h2>
+
+    <p>
+      eBridge.ai connects Salesforce Health Cloud with leading EMRs and Practice Management systems using healthcare-ready integrations. Deploy faster, reduce implementation effort, and keep patient data synchronized across your ecosystem.
+    </p>
+
+    <div class="hero-badges">
+      <div class="badge">
+        <img src="C:\Users\My PC\Desktop\eBridge2\shield.png" alt="">
+        <div><strong>HIPAA</strong><span>Compliant</span></div>
+      </div>
+
+      <div class="badge">
+        <img src="C:\Users\My PC\Desktop\eBridge2\car.png" alt="">
+        <div><strong>Faster</strong><span>Deployment</span></div>
+      </div>
+
+      <div class="badge">
+        <img src="C:\Users\My PC\Desktop\eBridge2\24-hours-support.png" alt="">
+        <div><strong>24/7</strong><span>Support</span></div>
+      </div>
+
+      <div class="badge">
+        <img src="C:\Users\My PC\Desktop\eBridge2\padlock (1).png" alt="">
+        <div><strong>Enterprise</strong><span>Grade Security</span></div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#" class="btn">Request a Demo →</a>
+      <a href="#" class="video-btn"><span class="play">▶</span> See How It Works</a>
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="center-logo">eBridge<span>.ai</span></div>
+
+    <div class="connector left-1"><img src="C:\Users\My PC\Desktop\eBridge2\Epic.png" alt="Epic"></div>
+    <div class="connector left-2"><img src="C:\Users\My PC\Desktop\eBridge2\eclinicalworks.png" alt="eClinicalWorks"></div>
+    <div class="connector left-3"><img src="C:\Users\My PC\Desktop\eBridge2\Athenahealth.png" alt="athenahealth"></div>
+    <div class="connector left-4"><img src="C:\Users\My PC\Desktop\eBridge2\cerner.png" alt="Cerner"></div>
+
+    <div class="connector right-1"><img src="C:\Users\My PC\Desktop\eBridge2\nextgen.png" alt="NextGen"></div>
+    <div class="connector right-2"><img src="C:\Users\My PC\Desktop\eBridge2\Meditech.png" alt="MEDITECH"></div>
+    <div class="connector right-3"><img src="C:\Users\My PC\Desktop\eBridge2\Allscripts.png" alt="Allscripts"></div>
+    <div class="connector right-4"><img src="C:\Users\My PC\Desktop\eBridge2\advancedMD.png" alt="AdvancedMD"></div>
+
+    <div class="line l1"></div>
+    <div class="line l2"></div>
+    <div class="line l3"></div>
+    <div class="line l4"></div>
+    <div class="line r1"></div>
+    <div class="line r2"></div>
+    <div class="line r3"></div>
+    <div class="line r4"></div>
+
+    <div class="circle">
+      <img src="C:\Users\My PC\Desktop\eBridge2\HealthCloud.png" class="health-cloud" alt="Salesforce Health Cloud">
+    </div>
+
+    <div class="more">And 50+ More</div>
+
+    <div class="secure-box">
+      <img src="C:\Users\My PC\Desktop\eBridge2\padlock1.png" alt="">
+      <div>
+        <h3>Built for Healthcare. Secured for Trust.</h3>
+        <p>End-to-end encryption, audit logs, and role-based access. Your data is always protected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="section-title">
+    <h2>Why Healthcare Organizations Choose eBridge.ai</h2>
+    <p>Purpose-built. Healthcare-focused. Results-driven.</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="card fade">
+      <div class="icon blue"><img src="C:\Users\My PC\Desktop\eBridge2\target.png" alt=""></div>
+      <h3>Built for Salesforce Health Cloud</h3>
+      <p>Designed exclusively for Salesforce Health Cloud to maximize your investment.</p>
+    </div>
+
+    <div class="card fade">
+      <div class="icon green"><img src="C:\Users\My PC\Desktop\eBridge2\settings.png" alt=""></div>
+      <h3>Pre-Built Healthcare Connectors</h3>
+      <p>50+ certified connectors to leading EMRs and Practice Management systems.</p>
+    </div>
+
+    <div class="card fade">
+      <div class="icon purple"><img src="C:\Users\My PC\Desktop\eBridge2\fast-charge.png" alt=""></div>
+      <h3>Faster Time to Value</h3>
+      <p>Healthcare-ready integrations that reduce custom development and accelerate deployment.</p>
+    </div>
+
+    <div class="card fade">
+      <div class="icon yellow"><img src="C:\Users\My PC\Desktop\eBridge2\costumer.png" alt=""></div>
+      <h3>Healthcare Integration Experts</h3>
+      <p>Deep healthcare and interoperability expertise to ensure your success from day one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="compare fade">
+  <h2>eBridge.ai vs. General Integration Platforms</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>eBridge.ai</th>
+          <th>General Integration Platforms<br>(MuleSoft, Boomi, etc.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Purpose-built for Salesforce Health Cloud</td><td><span class="check">●</span> Yes</td><td><span class="minus">●</span> Partial</td></tr>
+        <tr><td>Healthcare-first Platform</td><td><span class="check">●</span> Yes</td><td><span class="minus">●</span> No</td></tr>
+        <tr><td>Pre-built EMR Connectors</td><td><span class="check">●</span> 50+ Certified</td><td><span class="minus">●</span> Limited / Custom</td></tr>
+        <tr><td>Practice Management Integrations</td><td><span class="check">●</span> Comprehensive</td><td><span class="minus">●</span> Usually Custom</td></tr>
+        <tr><td>Healthcare Workflows Out of the Box</td><td><span class="check">●</span> Yes</td><td><span class="minus">●</span> Limited</td></tr>
+        <tr><td>Implementation Complexity</td><td><span class="check">●</span> Lower</td><td><span class="minus">●</span> Higher</td></tr>
+        <tr><td>Healthcare Implementation Expertise</td><td><span class="check">●</span> Dedicated</td><td><span class="minus">●</span> Varies</td></tr>
+        <tr><td>Time to Deploy</td><td><span class="check">●</span> Faster</td><td><span class="minus">●</span> Longer</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="standards fade">
+  <div class="standard-row">
+    <strong>Built on Industry Leading Standards</strong>
+    <span>HL7 v2</span>
+    <span>FHIR</span>
+    <span>CDA</span>
+    <span>CCD</span>
+    <span>X12</span>
+    <span>REST APIs</span>
+    <span>SOAP</span>
+    <span>SFTP</span>
+  </div>
+
+  <div class="logo-strip">
+    <p>Connect with the EMR & Practice Management systems you already use</p>
+
+    <div class="logo-row">
+      <img src="C:\Users\My PC\Desktop\eBridge2\Epic.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\eclinicalworks.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\Athenahealth.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\cerner.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\nextgen.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\Meditech.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\Allscripts.png" alt="">
+      <img src="C:\Users\My PC\Desktop\eBridge2\advancedMD.png" alt="">
+      <a href="#">+50<br>More</a>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <h2>How eBridge.ai Works</h2>
+
+  <div class="step-grid">
+    <div class="step fade">
+      <div class="step-icon"><img src="C:\Users\My PC\Desktop\eBridge2\connector.png" alt=""></div>
+      <h3>1. Connect</h3>
+      <p>We securely connect to your EMR/PM system.</p>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step fade">
+      <div class="step-icon"><img src="C:\Users\My PC\Desktop\eBridge2\sync (1).png" alt=""></div>
+      <h3>2. Map & Sync</h3>
+      <p>We map the data you need and start real-time or scheduled synchronization.</p>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step fade">
+      <div class="step-icon"><img src="C:\Users\My PC\Desktop\eBridge2\security.png" alt=""></div>
+      <h3>3. Flow Securely</h3>
+      <p>Data flows bi-directionally between your system and Salesforce Health Cloud.</p>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="step fade">
+      <div class="step-icon"><img src="C:\Users\My PC\Desktop\eBridge2\economy.png" alt=""></div>
+      <h3>4. Drive Better Outcomes</h3>
+      <p>Unified data. Better insights. Better patient care.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta fade">
+  <div class="cta-left">
+    <img src="C:\Users\My PC\Desktop\eBridge2\hipaa-compliant-checkmark-icon-vector-design-logo-symbol-vector-stock-illustration_100456-9287.png" alt="">
+    <div>
+      <h2>Ready to See eBridge.ai in Action?</h2>
+      <p>Connect your systems. Empower your team. Improve patient care.</p>
+    </div>
+  </div>
+
+  <a href="#" class="btn">Request a Demo →</a>
+
+  <div class="phone">
+    <div class="phone-box">☎</div>
+    <div>
+      <span>Talk to an Expert</span><br>
+      <strong>+ 1 347-508-4840</strong>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="logo">eBridge<span>.ai</span></div>
+
+  <nav>
+    <a href="#">Solutions</a>
+    <a href="#">Platform</a>
+    <a href="#">Connectors</a>
+    <a href="#">Resources</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+  </nav>
+
+  <p>© 2025 eBridge.ai. All rights reserved.<br>Privacy Policy | Terms of Service</p>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", function(){
+  navMenu.classList.toggle("active");
+});
+
+const fadeItems = document.querySelectorAll(".fade");
+
+function revealOnScroll(){
+  fadeItems.forEach(function(item){
+    const top = item.getBoundingClientRect().top;
+    if(top < window.innerHeight - 80){
+      item.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+</body>
+</html>
